@@ -1,14 +1,24 @@
 {
-    "name": "note-taker",
-    "version": "1.0.0",
-    "description": "",
-    "main": "server.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-      "express": "^4.16.4"
-    }
-  }
+  "name": "note-taker",
+  "version": "1.0.0",
+  "description": "## User Story",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nanoid": "^3.3.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rvacovsky/Note-Taker.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/rvacovsky/Note-Taker/issues"
+  },
+  "homepage": "https://github.com/rvacovsky/Note-Taker#readme"
+}
