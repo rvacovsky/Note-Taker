@@ -1,35 +1,28 @@
-const fs = require('fs');
-// unique id generator
-const nanoid = require('nanoid');
-
 const router = require('express').Router();
-
+const store = require('../db/store');
 
 router.get('/notes', (req, res) => {
-  let note = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
-  res.json(note);
+  store.getNotes().then((data) => {
+    return res.json(data)
+  })
+  .catch((err) => res.status(404).json(err))
 });
 
 
 router.post('/notes', (req, res) => {
-  let noteTaker = {
-    title: req.body.title,
-    text: req.body.text,
-    id: nanoid(),
-  };
-  fs.readFileSync('./db/db.json', (err, data) => {
-    if (err) throw err;
-    let noteData = JSON.parse(data);
-    noteData.push(noteTaker);
-    console.log(noteData);
-    fs.writeFileSync('.db/db/json', JSON.stringify(noteData));
-    res.send('Note Added');
-  })  
+  store.addNote(req.body).then((data) => {
+    return res.json(data)
+  })
+  .catch((err) => res.status(404).json(err))
 });
 
 
-// router.delete('/notes/:id', (req, res) => {
-  // let note = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
-// })
+
+router.delete('/notes/:id', (req, res) => {
+  store.deleteNote(req.params.id).then(() => {
+    res.json({ ok: true })
+  })
+  .catch((err) => res.status(404).json(err))
+});
 
 module.exports  = router;
