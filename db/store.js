@@ -18,11 +18,11 @@ class Store {
         let newNote;
         try {
             newNote = [].concat(JSON.parse(data));
-            console.log(newNote)
         } catch (error) {
             newNote = [];
         }
         return newNote;
+        
         
     }
     async addNote(note) {

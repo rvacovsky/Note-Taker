@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const store = require('../../db/store');
 
+
 router.get('/notes', (req, res) => {
   store.getNotes().then((data) => {
-    console.log(data)
     return res.json(data)
   })
   .catch((err) => res.status(404).json(err))
